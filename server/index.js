@@ -10,30 +10,35 @@ app.use(cors());
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "password",
-  database: "LoginSystem",
+  port: 3306,
+  password: "shruti1234",
+  database: "aavhaandb",
 });
 
 app.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-});
 
-db.query(
-  "SELECT * FROM users WHERE username = ? AND password = ?",
-  [username, password],
-  (err, result) => {
-    if (err) {
-      res.send({err: err})
+   console.log(username, password);
+  db.query(
+    `SELECT * FROM users WHERE username = ${username} AND password = ${password};`,
+    (err, result) => {
+      if (!err) {
+        console.log(result)
+        res.json(result);
+      }
+
+      // if (result) {
+      //   console.log(result);
+      //   res.json(result);
+      // } 
+      else {
+        console.log(err);
+        res.json({ message: "Wrong Username or Password" });
+      }
     }
-    
-    if (result) {
-      res.send(result);
-    } else {
-      res.send({ message: "Wrong Username or Password" });
-    }
-  }
-);
+  );
+});
 
 app.listen(3001, () => {
   console.log("running server successfully");
