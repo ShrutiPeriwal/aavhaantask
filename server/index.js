@@ -20,8 +20,8 @@ app.post("/register", (req, res) => {
   const password = req.body.password;
 
   db.query(
-    "INSERT INOT user (username, password) VALUES (?,?)",
-    [username, password],
+    `INSERT INTO users (username, password) VALUES ('${username}','${password}');`,
+    
     (err, result) => {
       console.log(err);
     }
@@ -34,7 +34,7 @@ app.post("/login", (req, res) => {
 
   console.log(username, password);
   db.query(
-    `SELECT * FROM users WHERE username = ${username} AND password = ${password};`,
+    `SELECT * FROM users WHERE username = '${username}' AND password = '${password}';`,
     (err, result) => {
       if (!err) {
         console.log(result);
