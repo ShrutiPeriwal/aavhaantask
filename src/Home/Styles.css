@@ -1,0 +1,35 @@
+.App {
+    font-family: sans-serif;
+    background-color: #e6c34a;
+    height: 100vh;
+    padding-left: 15px;
+    padding-top: 15px;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  .openButton {
+    background-color: #719c70;
+    color: white;
+    padding: 10px 15px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .openButton:hover {
+    border: 1px solid black;
+  }
+  
+  .drawer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    font-size: 25px;
+    padding-top: 20px;
+  }
+  
