@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
+    // const [showMediaIcons, setShowMediaIcons] = useState(false);
   return (
     <header className="absolute top-0 left-0 right-0 z-20">
       <nav className="container mx-auto px-6 md:px-12 py-4">
@@ -28,6 +30,12 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
+          {/* hamburget menu start 
+          <div className="hamburger-menu">
+            <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+              <GiHamburgerMenu />
+            </a>
+          </div> */}
         </div>
       </nav>
     </header>
