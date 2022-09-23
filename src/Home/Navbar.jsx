@@ -20,7 +20,7 @@ const Navbar = () => {
     <>
       <header className="header">
         <nav className="navbar">
-          <Link to="/" className="nav-logo">
+          <Link to="/hero" className="nav-logo">
             Home
           </Link>
           <ul className="nav-menu">
