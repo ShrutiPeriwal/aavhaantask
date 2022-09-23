@@ -1,44 +1,78 @@
 import React, { useState } from "react";
+import "./nav.css";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar = () => {
-    // const [showMediaIcons, setShowMediaIcons] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <header className="absolute top-0 left-0 right-0 z-20">
-      <nav className="container mx-auto px-6 md:px-12 py-4">
-        <div className="md:flex justify-between items-center">
-          <div className="hidden md:flex items-center">
-            <Link to="/hero">
-              <div className="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300">
-                Home
-              </div>
-            </Link>
-            <Link to="/product">
-              <div className="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300">
-                Product
-              </div>
-            </Link>
-            <Link to="/customer">
-              <div className="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300">
-                Customer
-              </div>
-            </Link>
-            <Link to="/order">
-              <div className="text-lg uppercase mx-3 text-white cursor-pointer hover:text-gray-300">
-                Order
-              </div>
-            </Link>
-          </div>
-          {/* hamburget menu start 
-          <div className="hamburger-menu">
-            <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
+    <>
+      <header className="header">
+        <nav className="navbar">
+          <Link to="/" className="nav-logo">
+            Home
+          </Link>
+          <ul className="nav-menu">
+            <li className="nav-item">
+              <Link to="/product" className="nav-link">
+                Products
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/customer" className="nav-link">
+                Customers
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/order" className="nav-link">
+                Orders
+              </Link>
+            </li>
+          </ul>
+          <div className="hamburger">
+            <Button
+              id="basic-button"
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              onClick={handleClick}
+            >
               <GiHamburgerMenu />
-            </a>
-          </div> */}
-        </div>
-      </nav>
-    </header>
+            </Button>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+            >
+              <MenuItem onClick={handleClose}>
+                <Link to="/product">Products</Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/customer">Customer</Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/order">Order</Link>
+              </MenuItem>
+            </Menu>
+          </div>
+        </nav>
+      </header>
+    </>
   );
 };
 
